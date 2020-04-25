@@ -8,7 +8,7 @@ import Botonmas from './comp/botonmas.js';
 import './styles/App.css';
 
 class App extends Component {
-  titulo = "Titulo como parámetro OO";
+  titulo = "Titulo como parámetro";
 
   render(){
     return (
