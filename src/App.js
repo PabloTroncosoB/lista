@@ -8,13 +8,16 @@ import Botonmas from './comp/botonmas.js';
 import './styles/App.css';
 
 class App extends Component {
-  titulo = "Titulo como parámetroaaa";
+
+  titulo = "Titulo como parámetro";
 
   render(){
+    const {params} = this.props.match;
     return (
       <div className="App">
         <Paper elevation={3}>
           <Header titulo={this.titulo} />
+          <div>parámetro por ruta {params.id}</div>
           <Elemento />
           <hr id="divisor"/>
           <Botonmas />
