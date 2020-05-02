@@ -2,7 +2,7 @@ import React, { Component }  from 'react';
 import Paper from '@material-ui/core/Paper';
 
 import Header from './comp/header.js';
-import Elemento from './comp/elemento.js';
+import Elementos from './comp/elementos.js';
 import Botonmas from './comp/botonmas.js';
 
 import './styles/App.css';
@@ -10,7 +10,9 @@ import './styles/App.css';
 class App extends Component {
 
   titulo = "Titulo como parámetro";
-
+  state={
+    lista:["Elemento 1","Otra cosa","8 pan","LEche","Sii","toda la comida"]
+  }
   render(){
     const {params} = this.props.match;
     return (
@@ -18,7 +20,7 @@ class App extends Component {
         <Paper elevation={3}>
           <Header titulo={this.titulo} />
           <div>parámetro por ruta {params.id}</div>
-          <Elemento />
+          <Elementos lista={this.state.lista}/>
           <hr id="divisor"/>
           <Botonmas />
         </Paper>

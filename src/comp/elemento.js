@@ -1,25 +1,33 @@
 import React, { Component } from "react";
 import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-//import { makeStyles } from '@material-ui/core/styles';
-//import TextField from '@material-ui/core/TextField';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
+import Grid from '@material-ui/core/Grid';
 
 class Elemento extends Component{
-	lista=["Elemento 1","Otra cosa","8 pan","LEche","Sii","toda la comida"];
+	state={
+		acciones:false
+	}
+	showme=e=>{
+		this.setState({ acciones: !this.state.acciones });
+	}
+
 	render(){
 		return(
-		<div>
-			{this.lista.map((elemento,key)=>(
-				<div key={key}>
-					<FormControlLabel control={<Checkbox name="check" key={key} color="primary"/>} label={elemento} />
-					<EditOutlinedIcon />
-					<DeleteOutlinedIcon />
-				</div>
-			))}
-
-		</div>
+			<Grid container key={this.props.id} alignItems="center" spacing={1}>
+				<Grid item>
+					<Checkbox color="primary"/>
+				</Grid>
+				<Grid item>
+					<span onClick={this.showme}>{this.props.nombre}</span>
+				</Grid>
+					{ this.state.acciones ? (
+						<Grid item>
+							<EditOutlinedIcon />
+							<DeleteOutlinedIcon />
+						</Grid>
+				):("")}
+			</Grid>
 		)
 	}
 }
