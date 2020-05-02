@@ -4,11 +4,8 @@ import Container from '@material-ui/core/Container';
 import Elemento from './elemento.js';
 
 class Elementos extends Component{
-	state={
-		acciones:false
-	}
-	showme=e=>{
-		console.log(e.parent);
+	cambiaNombre=(id,nombre)=>{
+		this.props.cambiaNombre(id,nombre);
 	}
 
 	render(){
@@ -21,7 +18,7 @@ class Elementos extends Component{
 	  alignItems="center"
 		>
 			{this.props.lista.map((elemento,id)=>(
-				<Elemento key={id} nombre={elemento} />
+				<Elemento key={id} nombre={elemento} id={id} cambiaNombre={this.cambiaNombre}/>
 			))}
 		</Grid >
 		</Container>

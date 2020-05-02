@@ -13,6 +13,11 @@ class App extends Component {
   state={
     lista:["Elemento 1","Otra cosa","8 pan","LEche","Sii","toda la comida"]
   }
+  cambiaNombre=(id,nombre)=>{
+    let newState={...this.state};
+    newState.lista[id]=nombre;
+    this.setState(newState);
+  }
   render(){
     const {params} = this.props.match;
     return (
@@ -20,8 +25,7 @@ class App extends Component {
         <Paper elevation={3}>
           <Header titulo={this.titulo} />
           <div>parámetro por ruta {params.id}</div>
-          <Elementos lista={this.state.lista}/>
-          <hr id="divisor"/>
+          <Elementos lista={this.state.lista} cambiaNombre={this.cambiaNombre}/>
           <Botonmas />
         </Paper>
       </div>
