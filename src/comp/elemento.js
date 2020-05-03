@@ -16,16 +16,18 @@ class Elemento extends Component{
 	}
 	editMe=e=>{
 		this.setState({edit: true});
-		console.log(this.props.id);
 	}
 	deleteMe=e=>{
-		console.log(this.props.nombre);
+		this.props.elementoHandler(this.props.id,this.props.nombre,"borra");
+	}
+	checkMe=e=>{
+		this.props.elementoHandler(this.props.id,this.props.nombre,"check");
 	}
 	ocultaMe=e=>{
 		this.setState({acciones:false});
 	}
 	guardaTextoElemento=e=>{
-		this.props.cambiaNombre(this.props.id,this.textoElemento.value);
+		this.props.elementoHandler(this.props.id,this.textoElemento.value,"edita");
 		this.setState({edit: false});
 		e.preventDefault();
 	}
@@ -37,7 +39,7 @@ class Elemento extends Component{
 		return(
 			<Grid container key={this.props.id} alignItems="center" spacing={1}>
 				<Grid item>
-					<Checkbox color="primary"/>
+					<Checkbox color="primary" onClick={ this.checkMe } checked={this.props.elChecker} />
 				</Grid>
 				<Grid item>
 					<span onClick={this.showme}>

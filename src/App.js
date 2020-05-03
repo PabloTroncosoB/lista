@@ -11,11 +11,18 @@ class App extends Component {
 
   titulo = "Titulo como parámetro";
   state={
-    lista:["Elemento 1","Otra cosa","8 pan","LEche","Sii","toda la comida"]
+    lista:["Elemento 1","Otra cosa","8 pan","Leche","Sii","toda la comida"],
+    listaChkd:[]
   }
-  cambiaNombre=(id,nombre)=>{
+  elementoHandler=(id,nombre,accion)=>{
     let newState={...this.state};
-    newState.lista[id]=nombre;
+    if (accion==="edita") {
+      newState.lista[id]=nombre;
+    }else if (accion==="borra") {
+      newState.lista.splice(id,1);
+    }else if (accion==="check") {
+      console.log(nombre+" checkeado");
+    }
     this.setState(newState);
   }
   render(){
@@ -25,7 +32,7 @@ class App extends Component {
         <Paper elevation={3}>
           <Header titulo={this.titulo} />
           <div>parámetro por ruta {params.id}</div>
-          <Elementos lista={this.state.lista} cambiaNombre={this.cambiaNombre}/>
+          <Elementos lista={this.state.lista} listaChkd={this.state.listaChkd} elementoHandler={this.elementoHandler}/>
           <Botonmas />
         </Paper>
       </div>

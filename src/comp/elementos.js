@@ -4,8 +4,8 @@ import Container from '@material-ui/core/Container';
 import Elemento from './elemento.js';
 
 class Elementos extends Component{
-	cambiaNombre=(id,nombre)=>{
-		this.props.cambiaNombre(id,nombre);
+	elementoHandler=(id,nombre,accion)=>{
+		this.props.elementoHandler(id,nombre,accion);
 	}
 
 	render(){
@@ -18,7 +18,10 @@ class Elementos extends Component{
 	  alignItems="center"
 		>
 			{this.props.lista.map((elemento,id)=>(
-				<Elemento key={id} nombre={elemento} id={id} cambiaNombre={this.cambiaNombre}/>
+				<Elemento key={id} nombre={elemento} id={id} elementoHandler={this.elementoHandler} elChecker={false} />
+			))}
+			{this.props.listaChkd.map((elemento,id)=>(
+				<Elemento key={id} nombre={elemento} id={id} elementoHandler={this.elementoHandler} elChecker={true} />
 			))}
 		</Grid >
 		</Container>
