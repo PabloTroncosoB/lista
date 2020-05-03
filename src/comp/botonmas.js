@@ -6,9 +6,9 @@ class Botonmas extends Component{
 	nuevoElemento= React.createRef();
 
 	adder=event=>{
-		console.log(this.nuevoElemento.value);
-		this.nuevoElemento.value="";
 		event.preventDefault();
+		this.props.donAdd(this.nuevoElemento.value);
+		this.nuevoElemento.value="";
 	}
 	render(){
 		return(

@@ -14,15 +14,26 @@ class App extends Component {
     lista:["Elemento 1","Otra cosa","8 pan","Leche","Sii","toda la comida"],
     listaChkd:[]
   }
-  elementoHandler=(id,nombre,accion)=>{
+  elementoHandler=(id,nombre,accion,lista)=>{
     let newState={...this.state};
     if (accion==="edita") {
       newState.lista[id]=nombre;
     }else if (accion==="borra") {
       newState.lista.splice(id,1);
     }else if (accion==="check") {
-      console.log(nombre+" checkeado");
+      if (lista==="lista1") {
+        newState.lista.splice(id,1);
+        newState.listaChkd.push(nombre);
+      }else if (lista==="lista2") {
+        newState.listaChkd.splice(id,1);
+        newState.lista.push(nombre);
+      }
     }
+    this.setState(newState);
+  }
+  agregar=(texto)=>{
+    let newState={...this.state};
+    newState.lista.push(texto);
     this.setState(newState);
   }
   render(){
@@ -33,7 +44,7 @@ class App extends Component {
           <Header titulo={this.titulo} />
           <div>parámetro por ruta {params.id}</div>
           <Elementos lista={this.state.lista} listaChkd={this.state.listaChkd} elementoHandler={this.elementoHandler}/>
-          <Botonmas />
+          <Botonmas donAdd={this.agregar}/>
         </Paper>
       </div>
     );

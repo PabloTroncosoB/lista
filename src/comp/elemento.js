@@ -12,7 +12,7 @@ class Elemento extends Component{
 	}
 	showme=e=>{
 		this.setState({ acciones: true });
-		setTimeout(this.ocultaMe,2000);
+		setTimeout(this.ocultaMe,4000);
 	}
 	editMe=e=>{
 		this.setState({edit: true});
@@ -59,7 +59,7 @@ class Elemento extends Component{
 						(this.props.nombre)}
 						</span>
 				</Grid>
-					{ this.state.acciones ? (
+					{ this.state.acciones && !this.props.elChecker ? (
 						<Grid item>
 							<EditOutlinedIcon onClick={ this.editMe } />
 							<DeleteOutlinedIcon onClick={ this.deleteMe }/>
