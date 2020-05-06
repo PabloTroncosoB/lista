@@ -9,9 +9,9 @@ import './styles/App.css';
 
 class App extends Component {
 
-  titulo = "Titulo como parámetro";
+  titulo = "Mi lista";
   state={
-    lista:["Elemento 1","Otra cosa","8 pan","Leche","Sii","toda la comida"],
+    lista:[],
     listaChkd:[]
   }
   elementoHandler=(id,nombre,accion,lista)=>{
@@ -37,12 +37,11 @@ class App extends Component {
     this.setState(newState);
   }
   render(){
-    const {params} = this.props.match;
+    //const {params} = this.props.match;<div>parámetro por ruta {params.id}</div>
     return (
       <div className="App">
         <Paper elevation={3}>
           <Header titulo={this.titulo} />
-          <div>parámetro por ruta {params.id}</div>
           <Elementos lista={this.state.lista} listaChkd={this.state.listaChkd} elementoHandler={this.elementoHandler}/>
           <Botonmas donAdd={this.agregar}/>
         </Paper>
